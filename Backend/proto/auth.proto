@@ -1,0 +1,48 @@
+syntax = 'proto3';
+
+package auth;
+
+message signUpUsersRequest{
+    string firstName= 1;
+    string lastName= 2;
+    string email= 3;
+    string password= 4;
+    string confirmPassword= 5;
+    string dob=6;
+    string phoneNo=7;
+    string address= 8;
+}
+
+message signUpUsersResponse
+{
+    string message = 1;
+}
+
+
+message signInUsersRequest
+{
+    string email= 1;
+    string password= 2;
+}
+
+message signInUsersResponse
+{
+    string message= 1;   
+}
+
+message forgotPasswordRequest
+{
+    string email= 1;    
+} 
+
+message forgotPasswordResponse
+{
+    string message= 1;
+}
+
+
+service AuthService{
+    rpc signUpUsers(signUpUsersRequest) returns (signUpUsersResponse){};
+    rpc signInUsers(signInUsersRequest) returns (signInUsersResponse){};
+    rpc forgotPassword(forgotPasswordRequest) returns (forgotPasswordResponse){};
+}
