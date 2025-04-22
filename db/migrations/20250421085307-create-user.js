@@ -24,10 +24,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      confirmPassword:{
-        allowNull: false,
-        type: Sequelize.STRING
-      },
       DOB:{
         allowNull: false,
         type: Sequelize.STRING
