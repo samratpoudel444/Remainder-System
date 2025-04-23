@@ -1,5 +1,5 @@
 const sequelize = require("../../../db/connection");
-const { todaysDate, removeyear } = require("./todaysDate");
+
 
 
 const birthdaywish= async()=>

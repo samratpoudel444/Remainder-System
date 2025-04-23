@@ -20,6 +20,7 @@ const consumeMessage = async()=>
        
             for(i= 0; i<data.length; i++)
             {
+                channel.ack(msg);
                 sendMail(data)
             }
         }

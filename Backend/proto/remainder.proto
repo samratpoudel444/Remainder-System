@@ -1,0 +1,25 @@
+syntax= "proto3";
+
+package remainder;
+
+import "utils.proto";
+
+message setRemainderRequest
+{
+    string remainderName= 1;
+    utils.remainderType remainderType= 2;
+    string remainderDate=3;
+    string message= 4;
+}
+
+message setRemainderResponse
+{
+    string message= 1;
+}
+
+
+
+service remainderService
+{
+   rpc setRemainder(setRemainderRequest)returns(setRemainderResponse){};
+}

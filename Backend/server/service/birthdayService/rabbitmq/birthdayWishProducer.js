@@ -6,7 +6,7 @@ const { assert } = require('console');
 
 
 
-cron.schedule('30 * * * * *', async()=>
+cron.schedule('* * 7 * * *', async()=>
 {
     console.log("task will run at 7 am every day ");
     const data= await birthdaywish()

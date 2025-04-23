@@ -17,12 +17,11 @@ server.addService(authPackage.AuthService.service, {
     signInUsers
 });
 
-
 function authServer()
 {
     server.bindAsync(authUrl, grpc.ServerCredentials.createInsecure(), ()=>
         {
-            console.log("auth server started on port: ", authUrl);
+            console.log("auth server started on URL: ", authUrl);
             
         })
 }

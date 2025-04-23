@@ -16,7 +16,7 @@
   "production": {
     "username": "root",
     "password": "password",
-    "database": "RemainderSystem  ",
+    "database": "RemainderSystem",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }

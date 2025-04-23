@@ -1,0 +1,18 @@
+syntax= "proto3";
+
+package utils;
+
+message Emptymessage
+{
+
+}
+
+
+enum remainderType{
+    BirthdayRemainder = 0;
+    TaskRemainder= 1;
+    BillPayemntRemainder= 2;
+    MedicationReminders= 3;
+    MeetingRemainder= 4;
+}
+

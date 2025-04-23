@@ -15,7 +15,7 @@ const transporter= nodemailer.createTransport({
 const sendMail= async(data)=>
 {
     
-        await transporter.sendEmail({
+        await transporter.sendMail({
             from: process.env.SENDER_EMAIL,
             to: data.email,
             subject:"Wishing you happy birthday",
