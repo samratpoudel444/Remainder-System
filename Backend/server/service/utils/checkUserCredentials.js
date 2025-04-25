@@ -2,7 +2,7 @@ const sequelize = require("../../db/connection");
 
 const checkUserExists= async(email)=>
 {
-    const query= `select email, password from users where email = :email`;
+    const query= `select id, email, password from users where email = :email`;
 
     const [checkUserExist, _]=await sequelize.query(query, {
         raw:true,

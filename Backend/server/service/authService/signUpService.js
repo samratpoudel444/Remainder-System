@@ -79,7 +79,8 @@ const signUpUsers = async (call, callback) => {
   )
 
   return callback(null, {
-    message: "User created successfully"
+    message: "User created successfully",
+    success:true
   });
 
 };

@@ -20,8 +20,9 @@ const authProto= grpc.loadPackageDefinition(packageDefinations);
 const userAuth = authProto.auth.AuthService;
 
 const authClient= new userAuth(
-   "localhost:50053",
+   "localhost:50052",
     grpc.credentials.createInsecure()
   );
+
 
 module.exports= {authClient}

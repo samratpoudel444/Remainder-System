@@ -13,9 +13,9 @@ const messageConsume= async()=>
     {
            if(msg)
            {
-            const data= msg.content.toString();
-            channel.ack(msg)
+            const data= msg.content.toJSON();
             mailService(data);
+            channel.ack(msg)
 
            }
         })
