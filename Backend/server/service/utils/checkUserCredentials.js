@@ -15,7 +15,7 @@ const checkUserExists= async(email)=>
     {
         return false;
     }
-       return checkUserExist[0].password;
+       return checkUserExist[0];
 }
 
 const checkUserNotExist= async(email)=>

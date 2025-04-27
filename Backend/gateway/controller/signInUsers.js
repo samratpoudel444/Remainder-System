@@ -1,6 +1,7 @@
 const grpc= require("@grpc/grpc-js");
 const { authClient } = require("../grpcClient/authClient");
 const jwt= require("jsonwebtoken")
+const dotenv= require("dotenv").config();
 
 const signInUsers= async(req ,resp, next)=>
 {
@@ -15,12 +16,13 @@ const signInUsers= async(req ,resp, next)=>
                     return next(error)
                 }
                 
-                if(response.success)
+                if(response)
                 {
+                    console.log(response);
                     const id= response.id;
-                    const accessToken= jwt.sign({id: id}, process.env.Remainder_System, {expiresIn:"1hr"}  )
+                    const accessToken= jwt.sign({id: id}, process.env.JWT_SECRET, {expiresIn:"1hr"}  )
         
-                    return res
+                    return resp
                     .cookie("token", accessToken, {
                       httpOnly: true,
                     })

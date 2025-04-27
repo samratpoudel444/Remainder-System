@@ -28,6 +28,8 @@ message signInUsersRequest
 message signInUsersResponse
 {
     string message= 1;   
+    bool success= 2;
+    string id= 3;
 }
 
 message forgotPasswordRequest

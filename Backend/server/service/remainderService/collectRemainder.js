@@ -1,15 +1,14 @@
 const grpc= require("@grpc/grpc-js");
 const sequelize = require("../../db/connection");
-const{v4 : uuidv4}= require("uuid")
-
-
+const{v4 : uuidv4}= require("uuid");
 
 
 const setRemainder= async(call, callback)=>
 {
     const{remainderName, remainderType, remainderDate, message}= call.request;
     const id= uuidv4();
-    const userId= "272e57fe-657d-4719-8e6c-3be72bd09d23";
+    const metadata= call.metadata;
+    const userId= metadata.get("userId")[0]
     try{
 
         if(!remainderName || !remainderType || !remainderDate || !message)

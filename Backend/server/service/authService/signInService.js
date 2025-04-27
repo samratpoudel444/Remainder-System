@@ -12,11 +12,15 @@ const signInUsers = async (call, callback) => {
     password
   };
 
+ 
+
   //for checking of call.request is sending the data or not 
      await checkFields(requiredFields, callback);
 
     //check if user exist or not 
     const checkUser = await checkUserExists(email)
+
+  
 
     if(!checkUser)
     {
@@ -26,7 +30,7 @@ const signInUsers = async (call, callback) => {
         })
     }
 
-    const storedPassword= checkUser;
+    const storedPassword= checkUser.password;
 
     const comparePassword= await bcrypt.compare(password, storedPassword);
 
@@ -38,6 +42,8 @@ const signInUsers = async (call, callback) => {
         })
     }
 
+
+    console.log(checkUser.id)
     return callback(null,{
         message:"User Logged In sucessfully",
         success: true,
