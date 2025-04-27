@@ -2,7 +2,7 @@ const amqp = require("amqplib");
 const { getAllRemainder } = require("../../utils/getAllRemainder");
 const cron= require('node-cron');
 
-cron.schedule('30 * * * * *', async()=>
+cron.schedule('10 * * * * *', async()=>
 {
     const data= await getAllRemainder();
     if(data)

@@ -11,7 +11,6 @@ const transporter= nodemailer.createTransport({
     
 })
 
-
 const sendMail= async(data)=>
 {
     
@@ -25,4 +24,4 @@ const sendMail= async(data)=>
     
 }
 
-module.exports= transporter, {sendMail};
+module.exports= {transporter, sendMail};

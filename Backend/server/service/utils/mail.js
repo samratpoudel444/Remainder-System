@@ -14,7 +14,7 @@ const transporter= nodemailer.createTransport({
 
 const mailService= async(data)=>
 {
-    
+
         await transporter.sendMail({
             from: process.env.SENDER_EMAIL,
             to: data.email,
@@ -24,5 +24,6 @@ const mailService= async(data)=>
     
     
 }
+
 
 module.exports= {mailService};

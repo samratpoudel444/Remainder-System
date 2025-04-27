@@ -1,4 +1,3 @@
-
 # Remainder System
 
 # Overview

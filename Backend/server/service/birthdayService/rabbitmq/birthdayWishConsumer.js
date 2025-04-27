@@ -1,34 +1,28 @@
-const amqp= require("amqplib");
-const { transporter, sendMail } = require("../utils/NodemailerConfig");
+const amqp = require("amqplib");
+const { sendMail } = require("../utils/NodemailerConfig");
 
+const consumeMessage = async () => {
+  const connection = await amqp.connect("amqp://localhost");
+  const channel = await connection.createChannel();
 
-const consumeMessage = async()=>
-{
-    const connection= await amqp.connect(`amqp://localhost`);
-    const channel =await connection.createChannel();
+  await channel.assertQueue("birthday_notifications", {
+    durable: true,
+    arguments: { "x-queue-mode": "lazy" },
+  });
 
+  await channel.consume("birthday_notifications", async (msg) => {
+    if (msg) {
+      const data = JSON.parse(msg.content.toString()); 
 
-    await channel.assertQueue("birthday_notifications", {durable:true,
-        arguments: { "x-queue-mode": "lazy" }
-       })
+      console.log(data);
 
-    await channel.consume("birthday_notifications", async(msg)=>
-    {
-        if(msg)
-        {
-            const data= msg.content.toString();
-       
-            for(i= 0; i<data.length; i++)
-            {
-                channel.ack(msg);
-                sendMail(data)
-            }
-        }
-       
+      const a= [data];
 
-    })
-}
+      await sendMail(data);
 
+      channel.ack(msg);
+    }
+  });
+};
 
 consumeMessage();
-

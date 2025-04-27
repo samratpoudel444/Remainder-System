@@ -13,10 +13,21 @@ const messageConsume= async()=>
     {
            if(msg)
            {
-            const data= msg.content.toJSON();
-            mailService(data);
-            channel.ack(msg)
+            const data = JSON.parse(msg.content.toString());
 
+
+      if (Array.isArray(data)) {
+        for (const item of data) {
+          console.log(item); 
+          await mailService(item); 
+        }
+      } else {
+        
+        console.log(data);
+        await mailService(data); 
+      }
+
+      channel.ack(msg)
            }
         })
        

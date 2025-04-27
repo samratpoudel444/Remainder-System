@@ -6,7 +6,7 @@ const { assert } = require('console');
 
 
 
-cron.schedule('* * 7 * * *', async()=>
+cron.schedule('5 * * * * *', async()=>
 {
     console.log("task will run at 7 am every day ");
     const data= await birthdaywish()
@@ -33,3 +33,6 @@ const messageProduce= async(data)=>
     await channel.close();
     await connection.close();
 }
+
+
+module.exports= {cron}
