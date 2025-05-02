@@ -19,6 +19,8 @@ Reminders Scheduling: Notifications are scheduled dynamically and sent out autom
 
 # Tools Used
 
+React.js: Frontend framework for building the system.
+
 Node.js & gRPC: Backend framework for building the system.
 
 MySQL: Database for storing user and task information.
