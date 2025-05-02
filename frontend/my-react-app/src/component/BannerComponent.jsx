@@ -6,7 +6,7 @@ function BannerPage() {
             </div>
             <div className="RightSide">
                 {/* You can put your Registration Form here */}
-                <h2>Form Goes Here</h2>
+                <h2></h2>
             </div>
         </div>
     );

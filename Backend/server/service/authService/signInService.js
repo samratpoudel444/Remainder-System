@@ -25,7 +25,7 @@ const signInUsers = async (call, callback) => {
     if(!checkUser)
     {
         return callback({
-            details:"Provided email with user doesnot exists",
+            message:"Provided email with user doesnot exists",
             code: grpc.status.INVALID_ARGUMENT
         })
     }
