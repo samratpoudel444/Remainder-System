@@ -1,5 +1,7 @@
 const amqp = require("amqplib");
 const { sendMail } = require("../utils/NodemailerConfig");
+const { Model } = require("sequelize");
+const { sendNotification } = require("../../utils/socketIo/sendNotifications");
 
 const consumeMessage = async () => {
   const connection = await amqp.connect("amqp://localhost");
@@ -12,17 +14,19 @@ const consumeMessage = async () => {
 
   await channel.consume("birthday_notifications", async (msg) => {
     if (msg) {
-      const data = JSON.parse(msg.content.toString()); 
+      const data = JSON.parse(msg.content.toString());
 
       console.log(data);
 
-      const a= [data];
+      const a = [data];
 
-      await sendMail(data);
+    sendNotification(data);
+
+     // await sendMail(data);
 
       channel.ack(msg);
     }
   });
 };
 
-consumeMessage();
+module.exports = { consumeMessage };

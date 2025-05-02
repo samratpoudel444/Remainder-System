@@ -11,15 +11,19 @@
   "dependencies": {
     "amqplib": "^0.10.7",
     "bcrypt": "^5.1.1",
+    "cookie": "^1.0.2",
     "cookie-parser": "^1.4.7",
     "cookieparser": "^0.1.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.14.0",
     "node-cron": "^3.0.3",
     "nodemailer": "^6.10.1",
+    "redis": "^4.7.0",
     "sequelize": "^6.37.7",
+    "socket.io": "^4.8.1",
     "uuid": "^11.1.0"
   },
   "devDependencies": {

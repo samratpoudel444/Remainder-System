@@ -1,53 +1,46 @@
 const sequelize = require("../../db/connection");
 
-const checkUserExists= async(email)=>
-{
-    const query= `select id, email, password from users where email = :email`;
+sequelize
 
-    const [checkUserExist, _]=await sequelize.query(query, {
-        raw:true,
-        replacements:{
-            email
-        }
-    }) 
+const checkUserExists = async (email) => {
+  const query = `select id, email, password from users where email = :email`;
 
-    if(!checkUserExist || checkUserExist.length == 0 )
-    {
-        return false;
-    }
-       return checkUserExist[0];
-}
+  const [checkUserExist, _] = await sequelize.query(query, {
+    raw: true,
+    replacements: {
+      email,
+    },
+  });
 
-const checkUserNotExist= async(email)=>
-{
-    const query= `select email, password from users where email = :email`;
+  if (!checkUserExist || checkUserExist.length == 0) {
+    return false;
+  }
+  return checkUserExist[0];
+};
 
-    const [checkUserExist, _]=await sequelize.query(query, {
-        raw:true,
-        replacements:{
-            email
-        }
-    }) 
+const checkUserNotExist = async (email) => {
+  const query = `select email, password from users where email = :email`;
 
-    if(!checkUserExist || checkUserExist.length == 0 )
-    {
-        return false;
-    }
-       return true;
-}
+  const [checkUserExist, _] = await sequelize.query(query, {
+    raw: true,
+    replacements: {
+      email,
+    },
+  });
 
+  if (!checkUserExist || checkUserExist.length == 0) {
+    return false;
+  }
+  return true;
+};
 
-
-const checkPassword= async(password, confirmPassword)=>
-{
-    if(password !== confirmPassword)
-    {
-        return false;
-    }
-    return true;
-}
-
+const checkPassword = async (password, confirmPassword) => {
+  if (password !== confirmPassword) {
+    return false;
+  }
+  return true;
+};
 
 // const extractPassword= async
 
-module.exports= {checkUserExists, checkPassword, checkUserNotExist}
+module.exports = { checkUserExists, checkPassword, checkUserNotExist };

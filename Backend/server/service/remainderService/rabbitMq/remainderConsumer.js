@@ -1,8 +1,8 @@
 const amqp= require("amqplib");
 const { mailService } = require("../../utils/mail");
+const { sendNotification } = require("../../utils/socketIo/sendNotifications");
 
-
-const messageConsume= async()=>
+const remainderMessageConsume= async()=>
 {
     const connection = await amqp.connect("amqp://localhost");
     const channel= await connection.createChannel();
@@ -14,24 +14,27 @@ const messageConsume= async()=>
            if(msg)
            {
             const data = JSON.parse(msg.content.toString());
-
+            console.log("hello", data);
+        
 
       if (Array.isArray(data)) {
         for (const item of data) {
-          console.log(item); 
-          await mailService(item); 
+          sendNotification(data)
+
         }
       } else {
-        
-        console.log(data);
-        await mailService(data); 
+         sendNotification(data);
+        //await mailService(data); 
+      
       }
 
-      channel.ack(msg)
+      channel.ack(msg);
+      console.log("message acknowledged")
            }
         })
        
     
 }
 
-messageConsume();
+remainderMessageConsume()
+module.exports={remainderMessageConsume}

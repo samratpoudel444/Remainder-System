@@ -6,7 +6,7 @@ const checkFields = (requiredFields, callback) => {
       console.log("Missing:", key);
       callback({
         code: grpc.status.INVALID_ARGUMENT,
-        details: `Please provide ${key}`
+        details: `Please provide ${key}`,
       });
       return false;
     }
