@@ -19,7 +19,7 @@ const {
 } = require("./server/service/remainderService/rabbitMq/remainderConsumer");
 const { Socket } = require("socket.io");
 
-const app= express();
+const app = express();
 
 const dotenv = require("dotenv").config();
 
